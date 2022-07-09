@@ -4,21 +4,23 @@ import os
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
-#リアクション関係のメソッド
+
+# リアクション関係のメソッド
 @client.event
 async def on_raw_reaction_add(payload):
-    
-    #指定したメッセージにリアクションがついたら。
+
+    # 指定したメッセージにリアクションがついたら。
     if payload.message_id == 990286766663671879: 
-        #サーバーの情報を取得
+        # サーバーの情報を取得
         guild_id = payload.guild_id
         guild = discord.utils.find(lambda g: g.id == guild_id, client.guilds)
-        #サーバー情報からロール情報を取得
+        # サーバー情報からロール情報を取得
         role = guild.get_role(990282640210931772)
-        #取得したロール情報をリアクションしたユーザに付与。IDがあっていればこれでリアクションロールはOK。
+        # 取得したロール情報をリアクションしたユーザに付与。IDがあっていればこれでリアクションロールはOK。
         await payload.member.add_roles(role)
 
-#メッセージ関係のメソッド
+
+# メッセージ関係のメソッド
 @client.event
 async def on_message(message):
     if message.content == "/ping":
@@ -42,7 +44,7 @@ async def on_message(message):
         else:
             judge = '非常に遅いです。'
 
-        #メッセージを出力する。pythonコマンド上だとbotが遅いのかPing値が大きい。
+        # メッセージを出力する。pythonコマンド上だとbotが遅いのかPing値が大きい。
         await message.reply(f"Ping値は{ping}msです。\n{judge}")
 
 client.run(token)
