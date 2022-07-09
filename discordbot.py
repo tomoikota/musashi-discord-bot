@@ -1,6 +1,6 @@
 import discord
 
-token = os.environ['BOT_TOKEN']
+token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
 #リアクション関係のメソッド
