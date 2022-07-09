@@ -1,6 +1,6 @@
 import discord
 
-token = getenv('BOT_TOKEN')
+token = os.environ['BOT_TOKEN']
 client = discord.Client()
 
 #リアクション関係のメソッド
@@ -44,4 +44,4 @@ async def on_message(message):
         #メッセージを出力する。pythonコマンド上だとbotが遅いのかPing値が大きい。
         await message.reply(f"Ping値は{ping}msです。\n{judge}")
 
-bot.run(token)
+client.run(token)
