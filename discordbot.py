@@ -10,7 +10,7 @@ client = discord.Client()
 async def on_raw_reaction_add(payload):
 
     # 指定したメッセージにリアクションがついたら。
-    if payload.message_id == 990286766663671879: 
+    if payload.message_id == 990286766663671879:
         # サーバーの情報を取得
         guild_id = payload.guild_id
         guild = discord.utils.find(lambda g: g.id == guild_id, client.guilds)
